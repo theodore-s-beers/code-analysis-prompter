@@ -1,0 +1,207 @@
+----------------
+Checking files/multi_select.py...
+Beginning chat with GPT-4o mini...
+Prompt tokens: 941
+Completion tokens: 101
+Answer: Yes, there is top-level code in the provided Python module that will execute upon import. Specifically, the following lines:
+
+```python
+pn.extension(design="material", global_css=[drexel_colors], raw_css=[raw_css])
+pn.config.raw_css.append(raw_css)
+```
+
+These lines initialize the Panel extension and modify the Panel configuration, which means they will execute immediately when the module is imported. This is generally considered top-level code that runs globally, which you indicated you want to avoid.
+----------------
+Checking files/initialize.py...
+Beginning chat with GPT-4o mini...
+Prompt tokens: 958
+Completion tokens: 111
+Answer: The provided Python module does not contain any top-level executable code that will run upon import. All code is encapsulated within function definitions, and there are no statements that would execute immediately when the module is imported.
+
+The only code that would execute is:
+
+- **Function definitions**: These are not executed until they are called.
+- **Imports**: The `import` statements will execute, but they do not have side effects that run code globally.
+
+Thus, you can conclude that there is no global execution of code in this module upon import.
+----------------
+Checking files/reading_question.py...
+Beginning chat with GPT-4o mini...
+Prompt tokens: 712
+Completion tokens: 88
+Answer: The provided Python module does not contain any top-level code that would execute upon import. The only code present at the top level is the class definition for `ReadingPythonQuestion`, which will not execute any logic until an instance of the class is created. The constructor (`__init__` method) is defined but will only run when an instance is instantiated, not upon import. Thus, you can confirm that there is no global execution.
+----------------
+Checking files/clean_folder.py...
+Beginning chat with GPT-4o mini...
+Prompt tokens: 345
+Completion tokens: 75
+Answer: The provided Python module does not contain any top-level code that will execute upon import. The only code that runs when the module is executed directly is within the `main()` function, which is called only if the module is run as the main program (i.e., if `__name__ == "__main__"`). Therefore, there is no global execution during import.
+----------------
+Checking files/submit_assignment.py...
+Beginning chat with GPT-4o mini...
+Prompt tokens: 624
+Completion tokens: 151
+Answer: Yes, the provided Python module does contain top-level code that will execute upon import. Specifically, the block under `if __name__ == "__main__":` is intended for example usage and will execute if the module is run as a script, but it will not execute when imported as a module.
+
+If you want to ensure that no code runs upon import, you should remove or comment out the `if __name__ == "__main__":` block and its contents.
+
+In summary:
+- **Top-level code present**: The code inside the `if __name__ == "__main__":` block.
+- **Execution on import**: No, it won't execute on import, but it will if the module is run directly.
+----------------
+Checking files/question_processor.py...
+Beginning chat with GPT-4o mini...
+Prompt tokens: 385
+Completion tokens: 55
+Answer: The provided Python module does not contain any top-level code that will execute upon import. All code is encapsulated within the function `process_questions_and_codes`, and there are no statements outside of function definitions. Therefore, there is no global execution when the module is imported.
+----------------
+Checking files/true_false.py...
+Beginning chat with GPT-4o mini...
+Prompt tokens: 689
+Completion tokens: 103
+Answer: Yes, there is top-level code that will execute upon import in the provided Python module. Specifically, the line:
+
+```python
+pn.extension(design="material", global_css=[drexel_colors], raw_css=[raw_css])
+```
+
+This line calls the `pn.extension` function, which is part of the `panel` library, and it is executed immediately when the module is imported. This means that any side effects or configurations done by this function call will occur as soon as the module is loaded.
+----------------
+Checking files/reading.py...
+Beginning chat with GPT-4o mini...
+Prompt tokens: 1168
+Completion tokens: 80
+Answer: The provided Python module does not contain any top-level code that will execute upon import. All of the code is encapsulated within the `ReadingPython` class and its methods. The only code that runs during the import is the import statements themselves, which do not execute any logic besides loading the modules.
+
+In summary, there is no top-level executable code in this module that would run on import.
+----------------
+Checking files/telemetry.py...
+Beginning chat with GPT-4o mini...
+Prompt tokens: 3120
+Completion tokens: 296
+Answer: Yes, the provided Python module contains top-level code that will execute upon import. Specifically, the following sections of code are executed immediately at the top level:
+
+1. **Logging Setup**: The code for setting up loggers (`logger_code` and `logger_reduced`) runs immediately. This includes creating log files and setting their logging levels.
+
+Here’s the relevant part of the code that runs at the top level:
+
+```python
+logger_code = logging.getLogger("code_logger")
+logger_code.setLevel(logging.INFO)
+
+file_handler_code = logging.FileHandler(".output_code.log")
+file_handler_code.setLevel(logging.INFO)
+logger_code.addHandler(file_handler_code)
+
+logger_reduced = logging.getLogger("reduced_logger")
+logger_reduced.setLevel(logging.INFO)
+
+file_handler_reduced = logging.FileHandler(".output_reduced.log")
+file_handler_reduced.setLevel(logging.INFO)
+logger_reduced.addHandler(file_handler_reduced)
+```
+
+This code will execute as soon as the module is imported, which is typically not desired if you are looking to avoid global side effects from an import.
+
+To avoid such execution, you should encapsulate this code inside a function or a conditional that checks whether the module is being run as the main program, such as:
+
+```python
+if __name__ == "__main__":
+    # Logging setup code here
+```
+
+This way, the logging setup will only occur when you explicitly run the script, not when it's imported as a module.
+----------------
+Checking files/tokens.py...
+Beginning chat with GPT-4o mini...
+Prompt tokens: 360
+Completion tokens: 78
+Answer: The provided Python module does not contain any top-level code that will execute upon import. All the code is encapsulated within function definitions (`build_token_payload` and `add_token`), and there are no statements outside of these function definitions that would cause any side effects or execution when the module is imported.
+
+So, to summarize: **No top-level code that executes on import.**
+----------------
+Checking files/api_notebook_builder.py...
+Skipping files/api_notebook_builder.py due to line count: 526
+----------------
+Checking files/validate.py...
+Beginning chat with GPT-4o mini...
+Prompt tokens: 2654
+Completion tokens: 295
+Answer: The provided Python module does contain some top-level code that will execute upon import. Here are the key points:
+
+1. **Environment Variable Checks**: The function `validate_logfile` checks for the presence of certain environment variables (`user_name_student`, `keys_student`, `DB_URL`) and calls `sys.exit()` if they are not set. If this function is called at the module level (not shown in the provided code), it would result in immediate termination of the program upon import.
+
+2. **File Operations**: The function `validate_logfile` includes file operations (e.g., writing to `info.json` and `results.json`) which will execute when the function is called. However, if the function itself is not called at the top level, these operations will not run on import.
+
+3. **Function Definitions**: All the functions defined in the module, including `validate_logfile`, are not executed until they are explicitly called. The mere presence of the function definitions does not lead to execution.
+
+In summary, if no functions in this module are called at the top level, the module itself will not execute any code upon import. However, if `validate_logfile` or any other function is called at the top level, it could result in immediate execution of code that checks environment variables or performs file operations. Make sure to check for any calls to these functions at the top level of the module to confirm if any unwanted global execution occurs.
+----------------
+Checking files/utils.py...
+Beginning chat with GPT-4o mini...
+Prompt tokens: 368
+Completion tokens: 110
+Answer: Yes, there is top-level code in the provided Python module that will execute upon import. Specifically, the following lines are executed when the module is imported:
+
+```python
+api_base_url = os.getenv("DB_URL")
+student_user = os.getenv("user_name_student")
+student_pw = os.getenv("keys_student")
+```
+
+These lines use `os.getenv()` to retrieve environment variables, and they execute immediately when the module is imported. If you're looking to avoid code that runs globally on import, you should refactor this part of the code.
+----------------
+Checking files/markdown_questions.py...
+Beginning chat with GPT-4o mini...
+Prompt tokens: 1022
+Completion tokens: 173
+Answer: The provided Python module contains a small amount of top-level code that will execute on import. Specifically, it defines a `main()` function and checks for `__name__ == "__main__"`, which means that the `main()` function will only be executed if the module is run as a script, not when it is imported.
+
+Here's a concise summary of the top-level code:
+
+- **No global code executes upon import.** Only the function and class definitions are present at the top level.
+- The `main()` function and the `if __name__ == "__main__": main()` block ensure that the code for argument parsing and executing the conversion is only run when the script is executed directly, not when it is imported as a module.
+
+Therefore, you can conclude that there is no top-level code that runs globally when this module is imported.
+----------------
+Checking files/select.py...
+Beginning chat with GPT-4o mini...
+Prompt tokens: 616
+Completion tokens: 107
+Answer: Yes, there is top-level code that executes on import in the module you provided. Specifically, the following line executes when the module is imported:
+
+```python
+pn.extension(design="material", global_css=[drexel_colors])
+```
+
+This line initializes the Panel library with specific configurations and will run immediately upon importing this module. If you want to avoid any code executing at the global level, you should place this code inside a function or a class method that is called explicitly later, rather than executing it at the top level.
+----------------
+Checking files/parse.py...
+Beginning chat with GPT-4o mini...
+Prompt tokens: 1594
+Completion tokens: 67
+Answer: The provided Python module does not contain any top-level code that will execute upon import. All code is encapsulated within class definitions and method definitions. There are no function calls or executable statements outside of these definitions, ensuring that nothing runs until a method of the `LogParser` class is explicitly called after an instance has been created.
+----------------
+Checking files/select_many.py...
+Beginning chat with GPT-4o mini...
+Prompt tokens: 1064
+Completion tokens: 139
+Answer: Yes, there is top-level code in the provided Python module that will execute upon import. Specifically, the following lines will run when the module is imported:
+
+```python
+pn.extension(design="material", global_css=[drexel_colors], raw_css=[raw_css])
+pn.config.raw_css.append(raw_css)
+```
+
+These lines are responsible for initializing the `panel` library with specific configurations, which means they will execute as soon as the module is imported, affecting the global state of the program. If you want to avoid such global side effects, you should move these lines into a function that is called explicitly after importing the module, rather than having them execute immediately at the top level.
+----------------
+Checking files/build_folder.py...
+Skipping files/build_folder.py due to line count: 2230
+----------------
+Checking files/student_info.py...
+Beginning chat with GPT-4o mini...
+Prompt tokens: 892
+Completion tokens: 97
+Answer: In the provided Python module, there is no top-level code that will execute upon import. The only code that runs at the top level are the definitions of constants and the `StudentInfoForm` class. Since there are no function calls, object instantiations, or other executable statements at the top level outside of class or function definitions, nothing will execute globally when this module is imported.
+
+Thus, you can safely conclude that there is no unwanted global execution in this module.
